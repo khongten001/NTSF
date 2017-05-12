@@ -1,7 +1,6 @@
 ({
 	doInit: function (component, event, helper) {
-		// Render table for the first time
-		helper.renderTable(component);
+        // Further functionality
 	},
 
 	dataSourceChanged: function (component, event, helper) {
@@ -11,7 +10,7 @@
 
 	checkboxSelect: function (component, event, helper) {
 		// Extract row, column data
-		var rowColumnInfo = helper.extractRowAndColumn(component, event.getSource().getGlobalId());
+		var rowColumnInfo = helper.extractRowAndColumnFromString(event.getSource().get('v.class'));
 		// Sync data
 		helper.syncRowData(component, rowColumnInfo[0]);
 		// Prepair parameters of event
@@ -42,13 +41,13 @@
 		// Get header checkbox value
 		var checked = event.getSource().get('v.value');
 		// Get column index of header checkbox
-		var column = helper.extractRowAndColumn(component, event.getSource().getGlobalId())[1];
+		var column = helper.extractRowAndColumnFromString(event.getSource().get('v.class'))[1];
 		// Get all checkboxes
 		var checkBoxes = component.find('ntsfTableCheckbox');
 		// Check checkBoxes children belong to "column" or not
 		for (var i = 0; i < checkBoxes.length; i++) {
 			try {
-				var infor = helper.extractRowAndColumn(component, checkBoxes[i].getGlobalId());
+				var infor = helper.extractRowAndColumnFromString(checkBoxes[i].get('v.class'));
 				// Set child value to header value
 				if (infor[1] == column) {
 					checkBoxes[i].set('v.value', checked);

@@ -1,10 +1,10 @@
 <aura:application extends="force:slds">
 	<aura:attribute name="data" type="Object[]" default="[]"/>
 	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
-	<aura:handler name="onNTSFTableRowClick" event="c:onNTSFTableRowClick" action="{!c.handleOnCellClick}"/>
+	<aura:handler name="onNTSFTableRowClick" event="c:onNTSFTableRowClick" action="{!c.handleOnNTSFTableRowClick}"/>
 	<aura:handler name="onNTSFTableCellClick" event="c:onNTSFTableCellClick" action="{!c.handleOnNTSFTableCellClick}"/>
 	<aura:handler name="onNTSFTableCheckboxChanged" event="c:onNTSFTableCheckboxChanged" action="{!c.handleOnNTSFTableCheckboxChanged}"/>
-	<aura:handler name="onNTSFTableButtonClick" event="c:onNTSFTableButtonClick" action="{!c.handleOnButtonClick}"/>
+	<aura:handler name="onNTSFTableButtonClick" event="c:onNTSFTableButtonClick" action="{!c.handleOnNTSFTableButtonClick}"/>
 
 
 	<c:NTSFTable dataSource="{!v.data}"

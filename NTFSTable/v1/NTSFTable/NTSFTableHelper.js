@@ -97,14 +97,6 @@
 		var match = regex.exec(componentHtml);
 		// Extract row, column data
 		return this.extractRowAndColumnFromString(match[0]);
-		/*
-		 var match = /ntsf\-table\-row\-([0-9]+)\-column-([0-9]+)/.exec(match[0]);  
-		 if (match != null) {
-		 return [+match[1], +match[2]];
-		 } else {
-		 return [0, 0];
-		 }
-		 */
 	},
 
 	checkCheckedAll: function (component, event) {

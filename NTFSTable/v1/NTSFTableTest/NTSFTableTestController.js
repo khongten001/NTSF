@@ -6,21 +6,19 @@
 		component.set('v.data', data);
 	},
 
-	handleOnButtonClick: function (component, event) {
-		var node = event.getParam('sender');
-		console.log(node);
+	handleOnNTSFTableButtonClick: function (component, event) {
+		alert('Button was clicked');
 	},
 
-	handleOnCellClick: function (component, event) {
-		var node = event.getParam('sender');
-		console.log(node);
+	handleOnNTSFTableRowClick: function (component, event) {
+		alert('Row was clicked');
 	},
 
 	handleOnNTSFTableCheckboxChanged: function (component, event) {
-		console.log(event.getParams().column);
+		alert('Checkbox value was changed');
 	},
 
 	handleOnNTSFTableCellClick: function (component, event) {
-		console.log(event.getParams().column);
+		alert('Cell was clicked');
 	}
 });
