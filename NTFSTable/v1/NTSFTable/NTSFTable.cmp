@@ -1,0 +1,92 @@
+<aura:component >
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	<aura:handler name="change" value="{!v.dataSource}" action="{!c.dataSourceChanged}"/>
+
+	<aura:attribute name="privateData" type="DateTime" default="" access="private"/>
+	<aura:attribute name="dataSource" type="Object[]" default="[]" />
+	<aura:attribute name="template" type="String" default="" />
+	<aura:attribute name="tableName" type="String" default="" />
+
+	<aura:registerEvent name="onNTSFTableCheckboxChanged" type="c:onNTSFTableCheckboxChanged"/>
+	<aura:registerEvent name="onNTSFTableCellClick" type="c:onNTSFTableCellClick"/>
+	<aura:registerEvent name="onNTSFTableRowClick" type="c:onNTSFTableRowClick"/>
+	<aura:registerEvent name="onNTSFTableButtonClick" type="c:onNTSFTableButtonClick"/>
+
+	<table class="slds-table slds-table--bordered">
+		<thead>
+			<tr class="slds-text-title--caps">
+				<aura:iteration items="{!v.privateData.header}" var="col" indexVar="columnIndex">
+					<aura:renderIf isTrue="{!col.type == 'boolean'}">
+						<th class="slds-text-align--left">
+							<div class="slds-form-element">
+								<div class="slds-form-element__control">
+									<label class="slds-checkbox">
+										<!--header checkbox for select all-->
+										<ui:inputcheckbox aura:id="ntsfTableHeaderCheckbox" class="{!'ntsf-table-row-0-column-' + columnIndex}" change="{!c.selectAll}" />
+										<span class="slds-checkbox--faux"></span>
+										<span class="slds-form-element__label text">{!col.caption}</span>
+									</label>
+								</div>
+							</div>
+						</th>
+						<aura:set attribute="else">
+							<th>
+								<span class="slds-truncate" title="{!col.caption}">{!col.caption}</span>
+							</th>
+						</aura:set>
+					</aura:renderIf>
+				</aura:iteration>
+			</tr>
+		</thead>
+
+
+		<tbody>
+
+			<aura:iteration items="{!v.privateData.rows}" var="row" indexVar="rowIndex" >                
+				<tr onclick="{!c.clickRow}" data-rowId="{!rowIndex}">
+					<aura:iteration items="{!row}" var="col" indexVar="columnIndex">
+						<!-- Checkbox -->
+						<aura:renderIf isTrue="{!col.meta.type == 'boolean'}">
+							<td scope="row" class="slds-text-align--left" onclick="{!c.clickCell}" data-rowId="{!rowIndex}" data-columnId="{!columnIndex}">
+								<div class="slds-form-element">
+									<div class="slds-form-element__control">
+										<label class="slds-checkbox">
+											<ui:inputcheckbox text=""  aura:id="ntsfTableCheckbox" value="{!col.data}" class="{!'ntsf-table-row-' + rowIndex + '-column-' + columnIndex}" change="{!c.checkboxSelect}" />
+											<span class="slds-checkbox--faux"></span>
+											<span class="slds-form-element__label text">{!col.text}</span>
+										</label>
+									</div>
+								</div>
+							</td>
+						</aura:renderIf>
+						<!-- Text -->
+						<aura:renderIf isTrue="{!col.meta.type == 'text'}">
+							<td scope="row" class="slds-text-align--left" onclick="{!c.clickCell}" data-rowId="{!rowIndex}" data-columnId="{!columnIndex}">
+								<span title="{!col.data}" class="slds-truncate">{!col.data}</span>
+							</td>
+						</aura:renderIf>
+						<!-- Datetime -->
+						<aura:renderIf isTrue="{!col.meta.type == 'datetime'}">
+							<td scope="row" class="slds-text-align--left" onclick="{!c.clickCell}" data-rowId="{!rowIndex}" data-columnId="{!columnIndex}">
+							<ui:outputDateTime value="{!col.data}" format="{!col.meta.format}"/>
+							</td>
+						</aura:renderIf>
+						<!-- Button -->
+						<aura:renderIf isTrue="{!col.meta.type == 'button'}">
+							<td scope="row" class="slds-text-align--left" onclick="{!c.clickCell}" data-rowId="{!rowIndex}" data-columnId="{!columnIndex}">                                
+							<lightning:button variant="brand" title="{!col.text}" class="{!'ntsf-table-row-' + rowIndex + '-column-' + columnIndex}" onclick="{! c.clickButton }">
+								{!col.data}
+							</lightning:button>
+							</td>
+						</aura:renderIf>
+					</aura:iteration>
+				</tr>
+			</aura:iteration>
+		</tbody>        
+
+
+	</table>
+
+
+
+</aura:component>
