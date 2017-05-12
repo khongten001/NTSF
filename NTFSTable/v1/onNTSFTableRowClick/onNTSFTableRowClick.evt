@@ -1,0 +1,4 @@
+<aura:event type="COMPONENT">
+    <aura:attribute name="sender" type="String"/>
+    <aura:attribute name="node" type="Object"/>
+</aura:event>
