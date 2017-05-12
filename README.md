@@ -14,8 +14,11 @@ Components for Salesforce Lightning
 
 *Supported controls:*
 - [x] Text
-- [x] Checkbox
 - [x] Button
+- [x] Checkbox
+- [ ] Checkbox Toggle
+- [ ] Radio button
+- [ ] Radio Group Alternate
 
 *Supported events:*
 - [x] Cell click
