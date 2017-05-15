@@ -27,6 +27,7 @@ Components for Salesforce Lightning
 - [x] Button click
 
 *Todo:*
+- [ ] Support Header click events
 - [ ] Support colspan attribute
 - [ ] Support rowspan attribute
 - [ ] Inline Editting
