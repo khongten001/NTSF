@@ -81,7 +81,7 @@ Replace **<** by **[** and **>** by **]** then put into template attribute:
         [column fieldValue='value'  fieldType='text'     fieldText='value' caption='Text column'     /]
         [column fieldValue='date'   fieldType='datetime'                   caption='Datetime column' /]
         [column fieldValue='button' fieldType='button'                     caption='Button column'   /]
-      [/columns]" tableName="table1">
+      [/columns]" aura:id="table1">
 
   </c:NTSFTable>
 ```
