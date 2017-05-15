@@ -89,7 +89,7 @@ Replace **<** by **[** and **>** by **]** then put into template attribute:
 
 ![2017-05-12_11-33-16](https://cloud.githubusercontent.com/assets/16706272/25982460/e39034f4-3706-11e7-92e6-f79f87290eb5.gif)
 
-### If you wanna get number of checked items of a column, replace value of column var and execute this code:
+**If you wanna get number of checked items of a column, replace value of column var and execute this code:**
 
 ```javascript
 	var table = component.find(TABLE_AURA:ID);
