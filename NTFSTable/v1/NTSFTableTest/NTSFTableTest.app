@@ -14,9 +14,15 @@
 				[column fieldValue='value' fieldType='text' fieldText='value' caption='Text column'/]
 				[column fieldValue='date' fieldType='datetime' caption='Datetime column'/]
 				[column fieldValue='button' fieldType='button' caption='Button column'/]
-			[/columns]" tableName="table1">
+			[/columns]" aura:id="testTableId">
 
 	</c:NTSFTable>
+	
+	<p style="margin-top: 20px">
+		<lightning:button variant="brand" title="Test selectedCount" onclick="{!c.clickButtonSelectedCount}">
+			Test selectedCount
+		</lightning:button>
+	</p>
     
     
 </aura:application>

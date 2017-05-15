@@ -5,7 +5,11 @@
 	<aura:attribute name="privateData" type="DateTime" default="" access="private"/>
 	<aura:attribute name="dataSource" type="Object[]" default="[]" />
 	<aura:attribute name="template" type="String" default="" />
-	<aura:attribute name="tableName" type="String" default="" />
+	<aura:attribute name="result" type="Object"/>
+
+	<aura:method name="doGetSelectedCount" action="{!c.doGetSelectedCount}">
+		<aura:attribute name="column" type="Integer" default="-1" />
+	</aura:method>
 
 	<aura:registerEvent name="onNTSFTableCheckboxChanged" type="c:onNTSFTableCheckboxChanged"/>
 	<aura:registerEvent name="onNTSFTableCellClick" type="c:onNTSFTableCellClick"/>
@@ -50,11 +54,11 @@
 							<td scope="row" class="slds-text-align--left" onclick="{!c.clickCell}" data-rowId="{!rowIndex}" data-columnId="{!columnIndex}">
 								<div class="slds-form-element">
 									<div class="slds-form-element__control">
-										<label class="slds-checkbox">
-											<ui:inputcheckbox text=""  aura:id="ntsfTableCheckbox" value="{!col.data}" class="{!'ntsf-table-row-' + rowIndex + '-column-' + columnIndex}" change="{!c.checkboxSelect}" />
+										<div class="{!'slds-checkbox ntsf-table-row-' + rowIndex + '-column-' + columnIndex}" onclick="{!c.checkboxSelect}" >
+											<ui:inputcheckbox value="{!col.data}" text="" aura:id="ntsfTableCheckbox" class="{!'ntsf-table-row-' + rowIndex + '-column-' + columnIndex}"/>
 											<span class="slds-checkbox--faux"></span>
 											<span class="slds-form-element__label text">{!col.text}</span>
-										</label>
+										</div>
 									</div>
 								</div>
 							</td>
@@ -86,7 +90,5 @@
 
 
 	</table>
-
-
 
 </aura:component>

@@ -1,7 +1,7 @@
 ({
 	createAndFireEvent: function (component, eventName, params) {
 		var event = component.getEvent(eventName);
-		params.sender = component.get('v.tableName');
+		params.sender = component.getLocalId();
 		event.setParams(params);
 		event.fire();
 	},
@@ -99,9 +99,8 @@
 		return this.extractRowAndColumnFromString(match[0]);
 	},
 
-	checkCheckedAll: function (component, event) {
+	checkCheckedAll: function (component, column) {
 		var privateData = component.get('v.privateData');
-		var column = this.extractRowAndColumn(component, event.getSource().getGlobalId())[1];
 		var checkedAll = true;
 
 		privateData.rows.forEach(function (row) {

@@ -20,5 +20,12 @@
 
 	handleOnNTSFTableCellClick: function (component, event) {
 		alert('Cell was clicked');
+	},
+
+	clickButtonSelectedCount: function (component, event) {
+		var table = component.find('testTableId');
+		var column = 0;
+		table.doGetSelectedCount(column);
+		alert(table.get('v.result'));
 	}
 });
