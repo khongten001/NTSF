@@ -26,8 +26,16 @@ Components for Salesforce Lightning
 - [x] Checkbox changed
 - [x] Button click
 
+*Footer:*
+- [ ] Count
+- [ ] Total
+- [ ] Selected count
+- [ ] Sum
+- [ ] Avg
+
 *Todo:*
 - [ ] Support Header click events
+- [ ] Support Footer click events
 - [ ] Support colspan attribute
 - [ ] Support rowspan attribute
 - [ ] Inline Editting
